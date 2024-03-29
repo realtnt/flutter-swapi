@@ -1,16 +1,29 @@
-# starwars_info
+# Description
 
-A new Flutter project.
+In this assignment, we want you to implement a simple mobile app that allows users to search for Star Wars resources (characters and starships) and save them to favourites. Use https://swapi.dev/ to retrieve data.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-   The app must have at least 2 pages/views:
+-   Homepage: users can search for characters and starships and mark them as favourites.    
+-   Favourites page: characters and starships marked as favourites are displayed.    
+-   Display movies in which favourite characters and starships appear on the favourites page.  
+# Application Content
+-   On the home page, display an input element that allows the user to search for characters, starships and planets by "name" and the API call should only be initiated after the user enters at least 2 characters.    
+-   The search page and favourites should display:
+	- for Star Wars characters: 
+		- name, 
+		- gender
+		- number of starships this person has piloted
+	- for starships: 
+		- name, 
+		- model, 
+		- manufacturer, 
+		- passengers
+	- for planets:
+		- name, 
+		- diameter, 
+		- population count    
+-   The favourites page should show the following for movies:
+	- title, 
+	- director
+	- producer
+-   Favourites, should be persistent (stored between application launches).
