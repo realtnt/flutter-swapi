@@ -1,6 +1,6 @@
-# Description
+# App Description
 
-In this assignment, we want you to implement a simple mobile app that allows users to search for Star Wars resources (characters and starships) and save them to favourites. Use https://swapi.dev/ to retrieve data.
+A simple mobile app that allows users to search for Star Wars resources (characters and starships) and save them to favourites using https://swapi.dev/ to retrieve data.
 
 -   The app must have at least 2 pages/views:
 -   Homepage: users can search for characters and starships and mark them as favourites.    
