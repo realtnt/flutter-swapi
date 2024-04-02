@@ -1,4 +1,8 @@
-class Planet {
+import 'package:starwars_info/src/localization/string_hardcoded.dart';
+import 'package:starwars_info/src/models/search_resource.dart';
+import 'package:starwars_info/src/models/search_info.dart';
+
+class Planet extends SearchResource {
   final String name;
   final String rotationPeriod;
   final String orbitalPeriod;
@@ -69,5 +73,17 @@ class Planet {
       'edited': edited,
       'url': url,
     };
+  }
+
+  @override
+  SearchInfo getInfo() {
+    final result = SearchInfo(
+      title: name,
+      data: {
+        "Diameter".hardcoded: diameter.toString(),
+        "Population".hardcoded: population.toString()
+      },
+    );
+    return result;
   }
 }

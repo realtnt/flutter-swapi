@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:starwars_info/src/models/character.dart';
 
-const kTestPeopleJson = '''
+const kTestCharactersJson = '''
 {
     "count": 82, 
     "next": "https://swapi.dev/api/people/?page=2", 
@@ -266,9 +266,9 @@ const kTestPeopleJson = '''
 }
 ''';
 
-class TestPeople {
+class TestCharacters {
   static List<Character> processJson() {
-    final json = jsonDecode(kTestPeopleJson);
+    final json = jsonDecode(kTestCharactersJson);
     return (json['results'] as List)
         .map((characterJson) => Character.fromJson(characterJson))
         .toList();

@@ -1,4 +1,8 @@
-class Starship {
+import 'package:starwars_info/src/localization/string_hardcoded.dart';
+import 'package:starwars_info/src/models/search_info.dart';
+import 'package:starwars_info/src/models/search_resource.dart';
+
+class Starship  extends SearchResource {
   final String name;
   final String model;
   final String manufacturer;
@@ -83,5 +87,18 @@ class Starship {
       'edited': edited,
       'url': url,
     };
+  }
+
+  @override
+  SearchInfo getInfo() {
+    final result = SearchInfo(
+      title: name,
+      data: {
+        "Model".hardcoded: model.toString(),
+        "Manufacturer".hardcoded: manufacturer.toString(),
+        "Passengers".hardcoded: passengers.toString()
+      },
+    );
+    return result;
   }
 }

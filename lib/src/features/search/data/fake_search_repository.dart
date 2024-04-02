@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:starwars_info/src/constants/test_people.dart';
+import 'package:starwars_info/src/constants/test_characters.dart';
 import 'package:starwars_info/src/constants/test_planets.dart';
 import 'package:starwars_info/src/constants/test_starships.dart';
 import 'package:starwars_info/src/models/character.dart';
@@ -9,16 +9,16 @@ import 'package:starwars_info/src/models/planet.dart';
 import 'package:starwars_info/src/models/starship.dart';
 
 class FakeSearchRepository {
-  final people = TestPeople.processJson();
+  final characters = TestCharacters.processJson();
   final planets = TestPlanets.processJson();
   final starships = TestStarships.processJson();
 
   Stream<List<Character>> searchPeople(String name) async* {
-    yield people.where((element) => element.name.contains(name)).toList();
+    yield characters.where((element) => element.name.contains(name)).toList();
   }
 
   List<Character> searchPeopleSync(String name) {
-    return people.where((element) => element.name.contains(name)).toList();
+    return characters.where((element) => element.name.contains(name)).toList();
   }
 
   Stream<List<Planet>> searchPlanets(String name) async* {
@@ -30,11 +30,13 @@ class FakeSearchRepository {
   }
 }
 
+// Providers
+
 final searchRepositoryProvider = Provider<FakeSearchRepository>((ref) {
   return FakeSearchRepository();
 });
 
-final peopleSearchStreamProvider =
+final charactersSearchStreamProvider =
     StreamProvider.family.autoDispose<List<Character>, String>((ref, name) {
   final searchRepository = ref.watch(searchRepositoryProvider);
   // final link = ref.keepAlive();
