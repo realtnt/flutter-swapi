@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:starwars_info/src/models/messages/search_messages.dart';
 import 'package:starwars_info/src/models/search_resource.dart';
 
@@ -23,9 +22,13 @@ class SearchResultsWidget extends StatelessWidget {
               children: [
                 Text(
                   messages.foundMessage,
-                  style: Theme.of(context).textTheme.headlineSmall,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
-                ListView.builder(
+                ListView.separated(
+                  separatorBuilder: (context, index) => const Divider(
+                    indent: 16,
+                    endIndent: 16,
+                  ),
                   shrinkWrap: true,
                   itemCount: data.length,
                   itemBuilder: (context, index) {
@@ -37,9 +40,8 @@ class SearchResultsWidget extends StatelessWidget {
                         children: [
                           Text(
                             title,
-                            style: Theme.of(context).textTheme.bodyLarge,
+                            style: Theme.of(context).textTheme.headlineSmall,
                           ),
-                          // TODO: Needs fixing
                           ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
@@ -47,9 +49,28 @@ class SearchResultsWidget extends StatelessWidget {
                             itemBuilder: (context, index) {
                               final key = infoItems.keys.elementAt(index);
                               final value = infoItems[key];
-                              return ListTile(
-                                title: Text('$key: $value'),
-                              );
+                              return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      key,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 16.0),
+                                      child: value is List
+                                          ? ListView.builder(
+                                              shrinkWrap: true,
+                                              itemCount: value.length,
+                                              itemBuilder: (context, index) =>
+                                                  Text(value[index]),
+                                            )
+                                          : Text('$value'),
+                                    ),
+                                  ]);
                             },
                           ),
                         ],

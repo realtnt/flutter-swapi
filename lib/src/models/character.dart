@@ -85,11 +85,17 @@ class Character extends SearchResource {
 
   @override
   SearchInfo getInfo() {
+    //TODO - Implement real look ups
+    final List<String> starshipNames = [
+      'starship 1',
+      'starship 2',
+      'starship 3',
+    ];
     final result = SearchInfo(
       title: name,
       data: {
-        "Gender".hardcoded: gender.toString(),
-        "Starships Piloted".hardcoded: starships.toString(),
+        "Gender".hardcoded: gender,
+        "Starships Piloted".hardcoded: starshipNames,
       },
     );
     return result;

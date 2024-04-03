@@ -80,8 +80,8 @@ class Planet extends SearchResource {
     final result = SearchInfo(
       title: name,
       data: {
-        "Diameter".hardcoded: diameter.toString(),
-        "Population".hardcoded: population.toString()
+        "Diameter".hardcoded: diameter,
+        "Population".hardcoded: population,
       },
     );
     return result;

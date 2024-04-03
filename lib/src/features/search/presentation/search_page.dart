@@ -34,7 +34,7 @@ class _SearchPageState extends State<SearchPage> {
                 controller: _controller,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Enter your text',
+                  labelText: 'Search',
                 ),
                 onChanged: (value) {
                   // Update the state of the widget to reflect the new text.

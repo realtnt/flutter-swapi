@@ -14,23 +14,25 @@ class FakeSearchRepository {
   final starships = TestStarships.processJson();
 
   Stream<List<Character>> searchPeople(String name) async* {
-    yield characters.where((element) => element.name.contains(name)).toList();
-  }
-
-  List<Character> searchPeopleSync(String name) {
-    return characters.where((element) => element.name.contains(name)).toList();
+    yield characters
+        .where((element) => element.name.toLowerCase().contains(name))
+        .toList();
   }
 
   Stream<List<Planet>> searchPlanets(String name) async* {
-    yield planets.where((element) => element.name.contains(name)).toList();
+    yield planets
+        .where((element) => element.name.toLowerCase().contains(name))
+        .toList();
   }
 
   Stream<List<Starship>> searchStarships(String name) async* {
-    yield starships.where((element) => element.name.contains(name)).toList();
+    yield starships
+        .where((element) => element.name.toLowerCase().contains(name))
+        .toList();
   }
 }
 
-// Providers
+// PROVIDERS
 
 final searchRepositoryProvider = Provider<FakeSearchRepository>((ref) {
   return FakeSearchRepository();
